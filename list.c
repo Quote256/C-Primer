@@ -118,7 +118,6 @@ elem list_remove_from_front(list_t *l) {
     return removedNum;
  }
 elem list_remove_at_index(list_t *l, int index) { 
-
   node_t *temp = l->head;
   if(index == 0){
     list_remove_from_front(l);
