@@ -2,7 +2,7 @@
 // 
 // Implementation for linked list.
 //
-// <Author>
+// Bradon Thymes
 
 #include <stdio.h>
 
@@ -70,7 +70,7 @@ void list_add_to_front(list_t *l, elem value) {
   l->head->next = n;
 }
 void list_add_at_index(list_t *l, elem value, int index) { 
-
+  
 }
 
 elem list_remove_from_back(list_t *l) { 
@@ -109,8 +109,10 @@ elem list_remove_at_index(list_t *l, int index) {
   }else if(index == (list_length(l) - 1)){
     list_remove_from_back(l);
   }else{
-    for(int i = 0; i < (index -1); i++){
+    int i = 0;
+    while(i < (index-1)){
       temp = temp->next;
+      i+=1;
     }
     elem removedNum = temp->value;
     free(temp);
@@ -136,12 +138,14 @@ bool list_is_in(list_t *l, elem value) {
 }
 elem list_get_elem_at(list_t *l, int index) { 
   node_t *t = l->head;
+  int i = 0;
   if(list_length(l) == 0){
     printf("Add elements to the list\n");
     return -1; 
   }
-  for(int i = 0; i < (index -1); i++){
+  while(i < (index-1)){
     t= t->next;
+    i+=1;
   }
   elem listElem = t->value;
   return listElem; 
