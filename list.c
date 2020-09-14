@@ -46,10 +46,24 @@ int list_length(list_t *l) {
   }
 
 void list_add_to_back(list_t *l, elem value) {
-	
+  //Initialize the temporary node that will add the element to the back
+	node_t *adderNode = l->head;
+  adderNode->value = value;
+  adderNode->next = NULL;
+  if(l->head == NULL){
+    l->head = adderNode;
+  }else{
+      while(adderNode != NULL){
+      adderNode = adderNode->next;
+    }
+  }
+
 }
 void list_add_to_front(list_t *l, elem value) {
-
+  node_t *n = l->head;
+  l->head = (node_t*)malloc(sizeof(node_t));
+  n->value = value;
+  n->next = n;
 }
 void list_add_at_index(list_t *l, elem value, int index) { }
 
