@@ -66,25 +66,29 @@ void list_add_to_back(list_t *l, elem value) {
 void list_add_to_front(list_t *l, elem value) {
   node_t *n = l->head;
   l->head = (node_t*)malloc(sizeof(node_t));
-  n->value = value;
-  n->next = n;
+  l->head->value = value;
+  l->head->next = n;
 }
-void list_add_at_index(list_t *l, elem value, int index) { }
+void list_add_at_index(list_t *l, elem value, int index) { 
+
+}
 
 elem list_remove_from_back(list_t *l) { 
-  if (!l)
-    {
+  node_t *temp = l->head;
+
+  if (list_length(l) == 0){
         return 0; 
-    }
-    node_t *temp = l->head;
-    while (temp->next != NULL)
-    {
+  }
+
+  if(temp->next != NULL){
         temp = temp->next;
-    }
-    elem removedNum = temp->value;
+  
+  }
+  elem removedNum = temp->value;
     free(temp);
   return removedNum;
- }
+ 
+}
 elem list_remove_from_front(list_t *l) { 
     if (!l)
       {
@@ -97,7 +101,23 @@ elem list_remove_from_front(list_t *l) {
       free(temp);
     return removedNum;
  }
-elem list_remove_at_index(list_t *l, int index) { return -1; }
+elem list_remove_at_index(list_t *l, int index) { 
+
+  node_t *temp = l->head;
+  if(index == 0){
+    list_remove_from_front(l);
+  }else if(index == (list_length(l) - 1)){
+    list_remove_from_back(l);
+  }else{
+    for(int i = 0; i < (index -1); i++){
+      temp = temp->next;
+    }
+    elem removedNum = temp->value;
+    free(temp);
+    return removedNum;
+  }
+  return -1;
+}
 
 bool list_is_in(list_t *l, elem value) { return false; }
 elem list_get_elem_at(list_t *l, int index) { return -1; }

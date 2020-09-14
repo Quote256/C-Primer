@@ -11,6 +11,8 @@ int main() {
   list_add_to_back(testList, 1);
   list_add_to_back(testList, 2);
   list_add_to_back(testList, 3);
+  list_add_to_front(testList, 0);
+  list_remove_at_index(testList, 0);
   list_print(testList);
   printf("\n%d\n", list_length(testList));
   return 0;
