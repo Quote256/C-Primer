@@ -30,7 +30,7 @@ void list_print(list_t *l) {
       printf("The list is empty\n");
     }
     while(cNode != NULL){
-        printf("%d", cNode->value);
+        printf("%d ", cNode->value);
         //Increments the placement of the node
         cNode =cNode->next;
     }
@@ -48,16 +48,20 @@ int list_length(list_t *l) {
 void list_add_to_back(list_t *l, elem value) {
   //Initialize the temporary node that will add the element to the back
 	node_t *adderNode = l->head;
-  adderNode->value = value;
-  adderNode->next = NULL;
-  if(l->head == NULL){
+  if (adderNode == NULL) {
+    adderNode = (node_t *) malloc(sizeof(node_t));
+    adderNode->value = value;
+    adderNode->next = NULL;
     l->head = adderNode;
-  }else{
-      while(adderNode != NULL){
+  } 
+  else {
+    while (adderNode->next != NULL) {
       adderNode = adderNode->next;
     }
+    adderNode->next = (node_t *) malloc(sizeof(node_t));
+    adderNode->next->value = value;
+    adderNode->next->next = NULL;    
   }
-
 }
 void list_add_to_front(list_t *l, elem value) {
   node_t *n = l->head;
@@ -67,8 +71,32 @@ void list_add_to_front(list_t *l, elem value) {
 }
 void list_add_at_index(list_t *l, elem value, int index) { }
 
-elem list_remove_from_back(list_t *l) { return -1; }
-elem list_remove_from_front(list_t *l) { return -1; }
+elem list_remove_from_back(list_t *l) { 
+  if (!l)
+    {
+        return 0; 
+    }
+    node_t *temp = l->head;
+    while (temp->next != NULL)
+    {
+        temp = temp->next;
+    }
+    elem removedNum = temp->value;
+    free(temp);
+  return removedNum;
+ }
+elem list_remove_from_front(list_t *l) { 
+    if (!l)
+      {
+          printf("The list does not exist.");
+          return 0;
+      }
+      elem removedNum = l->head->value;
+      node_t *temp = l->head;
+      l->head = l->head->next;
+      free(temp);
+    return removedNum;
+ }
 elem list_remove_at_index(list_t *l, int index) { return -1; }
 
 bool list_is_in(list_t *l, elem value) { return false; }

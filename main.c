@@ -8,7 +8,10 @@ int main() {
   //Tests the output if list is empty
   list_print(testList);
   printf("%d\n", list_length(testList));
-  list_add_to_front(testList, 1);
+  list_add_to_back(testList, 1);
+  list_add_to_back(testList, 2);
+  list_add_to_back(testList, 3);
   list_print(testList);
+  printf("\n%d\n", list_length(testList));
   return 0;
 }
