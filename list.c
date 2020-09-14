@@ -22,7 +22,19 @@ void list_free(list_t *l) {
   free(l);
 }
 
-void list_print(list_t *l) {  }
+void list_print(list_t *l) {
+    //Create a new node pointer variable that will traverse through the list 
+    node_t *cNode = l->head;
+    //Check to see if list is empty
+    if(cNode == NULL){
+      printf("The list is empty\n");
+    }
+    while(cNode != NULL){
+        printf("%d", cNode->value);
+        //Increments the placement of the node
+        cNode =cNode->next;
+    }
+ }
 int list_length(list_t *l) { 
 
   return -1; }
@@ -30,8 +42,10 @@ int list_length(list_t *l) {
 void list_add_to_back(list_t *l, elem value) {
 	
 }
-void list_add_to_front(list_t *l, elem value) {}
-void list_add_at_index(list_t *l, elem value, int index) {}
+void list_add_to_front(list_t *l, elem value) {
+
+}
+void list_add_at_index(list_t *l, elem value, int index) { }
 
 elem list_remove_from_back(list_t *l) { return -1; }
 elem list_remove_from_front(list_t *l) { return -1; }
