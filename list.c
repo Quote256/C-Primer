@@ -147,8 +147,18 @@ elem list_get_elem_at(list_t *l, int index) {
   return listElem; 
 }
 int list_get_index_of(list_t *l, elem value) { 
-  
-  
+  node_t *t = l->head;
+  int index = 0;
+
+  while(t != NULL){
+    if(t->value == value){
+      return index;
+    }else
+    {
+      t = t->next;
+      index+=1;
+    }
+  }
   
   return -1;   
 }
