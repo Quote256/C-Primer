@@ -36,8 +36,14 @@ void list_print(list_t *l) {
     }
  }
 int list_length(list_t *l) { 
-
-  return -1; }
+  int listLength = 0;
+  node_t *counterNode = l->head;
+  while(counterNode != NULL){
+    listLength+=1;
+    counterNode = counterNode->next;
+  }
+  return listLength; 
+  }
 
 void list_add_to_back(list_t *l, elem value) {
 	
