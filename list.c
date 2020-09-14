@@ -70,7 +70,23 @@ void list_add_to_front(list_t *l, elem value) {
   l->head->next = n;
 }
 void list_add_at_index(list_t *l, elem value, int index) { 
-  
+  node_t *temp = l->head;
+  int i = 0;
+  if(index >= (list_length(l)-1)){
+    list_add_to_back(l, value);
+  }
+  else if(index == 0){
+    list_add_to_front(l, value);
+  }
+  while(i != (index-1)){
+    temp = temp->next;
+    i+=1;
+  }
+  node_t *n = l->head;
+  n = (node_t*)malloc(sizeof(node_t));
+  n->value = value;
+  n->next = temp->next;
+  temp->next = n;
 }
 
 elem list_remove_from_back(list_t *l) { 
