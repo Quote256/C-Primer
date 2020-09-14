@@ -119,6 +119,36 @@ elem list_remove_at_index(list_t *l, int index) {
   return -1;
 }
 
-bool list_is_in(list_t *l, elem value) { return false; }
-elem list_get_elem_at(list_t *l, int index) { return -1; }
-int list_get_index_of(list_t *l, elem value) { return -1; }
+bool list_is_in(list_t *l, elem value) { 
+  if(list_length(l) == 0){
+    printf("Please add numbers to the list\n");
+    return false; 
+  }
+  node_t *t = l->head;
+  while(t != NULL){
+    if(t->value == value){
+      printf("true\n");
+      return true;
+    }
+    t = t->next;
+  }
+  return false;
+}
+elem list_get_elem_at(list_t *l, int index) { 
+  node_t *t = l->head;
+  if(list_length(l) == 0){
+    printf("Add elements to the list\n");
+    return -1; 
+  }
+  for(int i = 0; i < (index -1); i++){
+    t= t->next;
+  }
+  elem listElem = t->value;
+  return listElem; 
+}
+int list_get_index_of(list_t *l, elem value) { 
+  
+  
+  
+  return -1;   
+}

@@ -15,5 +15,7 @@ int main() {
   list_remove_at_index(testList, 0);
   list_print(testList);
   printf("\n%d\n", list_length(testList));
+  printf("%d\n",list_is_in(testList, 2));
+  printf("%d\n", list_get_elem_at(testList, 3));
   return 0;
 }
